@@ -1,0 +1,1 @@
+/Users/nicoletreadway/.bash_profile

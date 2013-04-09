@@ -1,0 +1,1 @@
+/Users/nicoletreadway/.git-completion.bash
