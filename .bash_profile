@@ -10,13 +10,15 @@ export PATH=/usr/local/bin:/usr/local/sbin:/Users/`whoami`/bin:/usr/local/share/
 export EDITOR=/usr/bin/vim
 export DEBUG_CAPISTRANO=true
 
-
-#### Work Bash Profile
-source ~/.bash_profile_gr
-
+command_exists () {
+  type "$1" &> /dev/null ;
+}
 
 #### RBENV and RVM
-eval "$(rbenv init -)"
+# Only if rbenv exists
+if command_exists rbenv; then
+  eval "$(rbenv init -)"
+fi
 #source /Users/knt/.rvm/scripts/
 
 #### Javascript Console
@@ -110,12 +112,12 @@ function mergeum { subl -n `git diff --name-only --diff-filter=U | tr "\\n" " "`
 # GIT_COMMITTER_EMAIL=\'kntreadway@gmail.com\'" HEAD"
 
 #Git Diff Next - personal git workflow
-export GDNPATH="$HOME/git_diff_next.rb"
+export GDNPATH="$HOME/scripts/git_diff_next.rb"
 function gdn { ruby $GDNPATH; }
 
 #Dash Documentation shortcut
-function rdash { open dash://ruby:$1 }
-function railsdash { open dash://rails:$1 }
+function rdash { open dash://ruby:$1; }
+function railsdash { open dash://rails:$1; }
 
 #Exit the current directory and reenter it; useful for reloading .rvrmc
 alias reenter='current=`pwd`; cd ..; cd $current'
@@ -123,3 +125,6 @@ alias reenter='current=`pwd`; cd ..; cd $current'
 # Find most used commands in bash history as alias candidates, from @rook
 # history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
 # history | awk '{a[substr($0, index($0,$2))]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
+
+#### Work Bash Profile
+source ~/.bash_profile_gr
