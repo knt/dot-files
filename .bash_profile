@@ -1,35 +1,42 @@
 #!/bin/bash
-# Load RVM, if you are using it
-#[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
-######Javascript Console
+#### Load RVM, if you are using it
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+#### Paths
+export PATH=/usr/local/bin:~/bin:$PATH
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH=/usr/local/bin:/usr/local/sbin:/Users/`whoami`/bin:/usr/local/share/npm/bin:$PATH
+export EDITOR=/usr/bin/vim
+export DEBUG_CAPISTRANO=true
+
+command_exists () {
+  type "$1" &> /dev/null ;
+}
+
+#### RBENV and RVM
+# Only if rbenv exists
+if command_exists rbenv; then
+  eval "$(rbenv init -)"
+fi
+#source /Users/knt/.rvm/scripts/
+
+#### Javascript Console
 alias jsc=/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc
 
-######Paths
-# MacPorts Installer addition on 2012-01-20_at_13:27:24: adding an appropriate PATH variable for use with MacPorts.
-#export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
-export PATH=/usr/local/bin:/usr/local/sbin:/Users/knt/bin:/usr/local/share/npm/bin:$PATH
-export EDITOR=/usr/bin/vim
+#### Ruby Settings
+export RUBY_HEAP_MIN_SLOTS=800000
+export RUBY_HEAP_FREE_MIN=100000
+export RUBY_HEAP_SLOTS_INCREMENT=300000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=79000000
 
-# Setting PATH for Python 2.7
-# The orginal version is saved in .bash_profile.pysave
-#PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-#export PATH
-
-###### These flags are useful for installing some tricky gemsets
+##### These flags are useful for installing some tricky gemsets
 #export ARCHFLAGS="-arch x86_64"
 #export CC=/usr/bin/gcc
 #export CC=/usr/bin/gcc-4.2
 
-######Custom Functions
-
-#from bmuller
-function g { grep -RiI --color $1 .; }
-function p { for f in $(ls -d ~/code/$1*); do cd $f; break; done; }
-function k { for f in $(ls -d ~/knt/$1*); do cd $f; break; done; }
-function m { for f in $(ls -d ~/code/$1*); do mate $f; break; done; }
-
+#### Git Completion
 source ~/.git-completion.bash
 export GIT_PS1_SHOWDIRTYSTATE=true # '*' for unstaged changes, '+' for staged
 export GIT_PS1_SHOWSTASHSTATE=true # '$' if smth is stashed
@@ -69,33 +76,39 @@ proml
 #export PS1="\[\e[1;35m\]\h\[\e[m\] \w$ "
 export PS1
 
-
+#### Custom Functions and Shortcuts
 ###Custom Shortcuts
-alias knt='cd ~/code'
-function g { grep -riI --exclude=\*.log --exclude-dir="\.git" --color $1 .; }
+function grp { grep -riI --exclude=\*.log --exclude-dir="\.git;coverage" --color $1 .; }
 function p { for f in $(ls -d ~/code/$1*); do cd $f; break; done; }
-#function k { for f in $(ls -d ~/knt/$1*); do cd $f; break; done; }
-#function m { for f in $(ls -d ~/code/$1*); do mate $f; break; done; }
+function k { for f in $(ls -d ~/knt/$1*); do cd $f; break; done; }
+function m { for f in $(ls -d ~/code/$1*); do subl $f; break; done; }
 
+alias knt='cd ~/code'
+
+# Git and other Shortcuts
 alias be='bundle exec'
-alias br='branch'
 alias bi='bundle install'
+alias br='branch'
+alias g='git'
 alias ga='git add'
 alias gd='git diff'
 alias gbr='git branch'
+alias gco='git co'
 alias gp='git pull origin master'
 alias gpr='git pull --rebase origin master'
 alias gr='cd ~/code/gr'
 alias gst='git status'
-alias ls='ls -G'
+alias ls='ls -Ga'
 alias rt='ruby -Ilib'
+alias st='status'
 
+# Open all unmerged files in Sublime
 function mergeum { subl -n `git diff --name-only --diff-filter=U | tr "\\n" " "`; }
 
 #This fixes all commits for a repo to be my personal username...use with caution :)
 # alias makeme='git filter-branch -f --env-filter "GIT_AUTHOR_NAME=\'Nichole Treadway\' GIT_AUTHOR_EMAIL=\'kntreadway@gmail.com\' GIT_COMMITTER_NAME=\'Nichole Treadway\' GIT_COMMITTER_EMAIL=\'kntreadway@gmail.com\'" HEAD"
 
-#Git Diff Next
+#Git Diff Next - personal git workflow
 export GDNPATH="$HOME/git_diff_next.rb"
 function gdn { ruby $GDNPATH; }
 
@@ -105,5 +118,16 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 source /Users/knt/.rvm/scripts/
 
+#Dash Documentation shortcut
+function rdash { open dash://ruby:$1; }
+function railsdash { open dash://rails:$1; }
+
+#Exit the current directory and reenter it; useful for reloading .rvrmc
+alias reenter='current=`pwd`; cd ..; cd $current'
+
+# Find most used commands in bash history as alias candidates, from @rook
 # history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
 # history | awk '{a[substr($0, index($0,$2))]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
+
+#### Work Bash Profile
+source ~/.bash_profile_gr
