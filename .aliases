@@ -1,0 +1,21 @@
+#!/bin/bash
+
+alias knt='cd ~/code'
+
+# Git and other Shortcuts
+alias be='bundle exec'
+alias bi='bundle install'
+alias br='branch'
+alias g='git'
+alias ga='git add'
+alias gd='git diff'
+alias gbr='git branch'
+alias gco='git co'
+alias gp='git pull origin master'
+alias gpr='git pull --rebase origin master'
+alias gr='cd ~/code/gr'
+alias gst='git status'
+alias ls='ls -G'
+alias lsa='ls -a'
+alias rt='ruby -Ilib'
+alias st='status'

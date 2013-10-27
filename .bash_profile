@@ -83,28 +83,11 @@ function p { for f in $(ls -d ~/code/$1*); do cd $f; break; done; }
 function k { for f in $(ls -d ~/knt/$1*); do cd $f; break; done; }
 function m { for f in $(ls -d ~/code/$1*); do subl $f; break; done; }
 
-alias knt='cd ~/code'
-
-# Git and other Shortcuts
-alias be='bundle exec'
-alias bi='bundle install'
-alias br='branch'
-alias g='git'
-alias ga='git add'
-alias gd='git diff'
-alias gbr='git branch'
-alias gco='git co'
-alias gp='git pull origin master'
-alias gpr='git pull --rebase origin master'
-alias gr='cd ~/code/gr'
-alias gst='git status'
-alias ls='ls -G'
-alias lsa='ls -a'
-alias rt='ruby -Ilib'
-alias st='status'
-
 # Open all unmerged files in Sublime
 function mergeum { subl -n `git diff --name-only --diff-filter=U | tr "\\n" " "`; }
+
+# Get SHA of parent commit
+function parent { git log -1 --format="%P" | tr -d '\n' | pbcopy; }
 
 #This fixes all commits for a repo to be my personal username...use with caution :)
 # alias makeme='git filter-branch -f --env-filter "GIT_AUTHOR_NAME=\'Nichole Treadway\' GIT_AUTHOR_EMAIL=\'kntreadway@gmail.com\' GIT_COMMITTER_NAME=\'Nichole Treadway\' GIT_COMMITTER_EMAIL=\'kntreadway@gmail.com\'" HEAD"
@@ -112,6 +95,7 @@ function mergeum { subl -n `git diff --name-only --diff-filter=U | tr "\\n" " "`
 #Git Diff Next - personal git workflow
 export GDNPATH="$HOME/git_diff_next.rb"
 function gdn { ruby $GDNPATH; }
+
 
 #Exit the current directory and reenter it; useful for reloading .rvrmc
 alias reenter='current=`pwd`; cd ..; cd $current'
@@ -130,5 +114,6 @@ alias reenter='current=`pwd`; cd ..; cd $current'
 # history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
 # history | awk '{a[substr($0, index($0,$2))]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
 
+source .aliases
 #### Work Bash Profile
 source ~/.bash_profile_gr
