@@ -21,8 +21,7 @@ if command_exists rbenv; then
 fi
 #source /Users/knt/.rvm/scripts/
 
-#### Javascript Console
-alias jsc=/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc
+
 
 #### Ruby Settings
 export RUBY_HEAP_MIN_SLOTS=800000
@@ -96,9 +95,6 @@ function parent { git log -1 --format="%P" | tr -d '\n' | pbcopy; }
 export GDNPATH="$HOME/git_diff_next.rb"
 function gdn { ruby $GDNPATH; }
 
-
-#Exit the current directory and reenter it; useful for reloading .rvrmc
-alias reenter='current=`pwd`; cd ..; cd $current'
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 source /Users/knt/.rvm/scripts/
@@ -107,8 +103,7 @@ source /Users/knt/.rvm/scripts/
 function rdash { open dash://ruby:$1; }
 function railsdash { open dash://rails:$1; }
 
-#Exit the current directory and reenter it; useful for reloading .rvrmc
-alias reenter='current=`pwd`; cd ..; cd $current'
+
 
 # Find most used commands in bash history as alias candidates, from @rook
 # history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20

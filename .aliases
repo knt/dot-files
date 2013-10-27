@@ -19,3 +19,9 @@ alias ls='ls -G'
 alias lsa='ls -a'
 alias rt='ruby -Ilib'
 alias st='status'
+
+#Exit the current directory and reenter it; useful for reloading .rvrmc
+alias reenter='current=`pwd`; cd ..; cd $current'
+
+#### Javascript Console
+alias jsc=/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc
