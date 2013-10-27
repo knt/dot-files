@@ -97,7 +97,7 @@ function gdn { ruby $GDNPATH; }
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-source /Users/knt/.rvm/scripts/
+source /Users/knt/.rvm/scripts/rvm
 
 #Dash Documentation shortcut
 function rdash { open dash://ruby:$1; }
@@ -110,5 +110,7 @@ function railsdash { open dash://rails:$1; }
 # history | awk '{a[substr($0, index($0,$2))]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
 
 source .aliases
+
 #### Work Bash Profile
-source ~/.bash_profile_gr
+WORK_BASH="~/.bash_profile_gr"
+[[ -s $WORK_BASH ]] && source $WORK_BASH
