@@ -65,7 +65,7 @@ function proml {
   esac
 
 PS1="${TITLEBAR}\
-\u@\h:\W$RED \$(parse_git_branch) \
+\u:\W$RED \$(parse_git_branch) \
 $NONE$ "
 PS2='> '
 PS4='+ '
@@ -83,7 +83,7 @@ function k { for f in $(ls -d ~/knt/$1*); do cd $f; break; done; }
 function m { for f in $(ls -d ~/code/$1*); do subl $f; break; done; }
 
 # Open all unmerged files in Sublime
-function mergeum { subl -n `git diff --name-only --diff-filter=U | tr "\\n" " "`; }
+function conflicts { subl -n `git diff --name-only --diff-filter=U | tr "\\n" " "`; }
 
 # Get SHA of parent commit
 function parent { git log -1 --format="%P" | tr -d '\n' | pbcopy; }
