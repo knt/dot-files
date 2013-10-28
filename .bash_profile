@@ -95,15 +95,9 @@ function parent { git log -1 --format="%P" | tr -d '\n' | pbcopy; }
 export GDNPATH="$HOME/git_diff_next.rb"
 function gdn { ruby $GDNPATH; }
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-source /Users/knt/.rvm/scripts/rvm
-
 #Dash Documentation shortcut
 function rdash { open dash://ruby:$1; }
 function railsdash { open dash://rails:$1; }
-
-
 
 # Find most used commands in bash history as alias candidates, from @rook
 # history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
