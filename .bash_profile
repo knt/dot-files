@@ -109,7 +109,7 @@ function railsdash { open dash://rails:$1; }
 # history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
 # history | awk '{a[substr($0, index($0,$2))]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
 
-source .aliases
+source ~/.aliases
 
 #### Work Bash Profile
 WORK_BASH="~/.bash_profile_gr"
