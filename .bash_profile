@@ -106,5 +106,5 @@ function railsdash { open dash://rails:$1; }
 source ~/.aliases
 
 #### Work Bash Profile
-WORK_BASH="~/.bash_profile_gr"
+WORK_BASH="$HOME/.bash_profile_gr"
 [[ -s $WORK_BASH ]] && source $WORK_BASH
