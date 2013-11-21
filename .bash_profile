@@ -65,7 +65,7 @@ function proml {
   esac
 
 PS1="${TITLEBAR}\
-\u@\h:\W$RED \$(parse_git_branch) \
+\u:\W$RED \$(parse_git_branch) \
 $NONE$ "
 PS2='> '
 PS4='+ '
@@ -83,7 +83,10 @@ function k { for f in $(ls -d ~/knt/$1*); do cd $f; break; done; }
 function m { for f in $(ls -d ~/code/$1*); do subl $f; break; done; }
 
 # Open all unmerged files in Sublime
-function mergeum { subl -n `git diff --name-only --diff-filter=U | tr "\\n" " "`; }
+function conflicts { subl -n `git diff --name-only --diff-filter=U | tr "\\n" " "`; }
+
+# Get SHA of parent commit
+function parent { git log -1 --format="%P" | tr -d '\n' | pbcopy; }
 
 # Get SHA of parent commit
 function parent { git log -1 --format="%P" | tr -d '\n' | pbcopy; }
@@ -103,8 +106,6 @@ source /Users/knt/.rvm/scripts/rvm
 function rdash { open dash://ruby:$1; }
 function railsdash { open dash://rails:$1; }
 
-
-
 # Find most used commands in bash history as alias candidates, from @rook
 # history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
 # history | awk '{a[substr($0, index($0,$2))]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
@@ -112,5 +113,5 @@ function railsdash { open dash://rails:$1; }
 source ~/.aliases
 
 #### Work Bash Profile
-WORK_BASH="~/.bash_profile_gr"
+WORK_BASH="$HOME/.bash_profile_gr"
 [[ -s $WORK_BASH ]] && source $WORK_BASH
