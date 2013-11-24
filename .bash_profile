@@ -86,13 +86,14 @@ function m { for f in $(ls -d ~/code/$1*); do subl $f; break; done; }
 function conflicts { subl -n `git diff --name-only --diff-filter=U | tr "\\n" " "`; }
 
 # Get SHA of parent commit
-function parent { git log -1 --format="%P" | tr -d '\n' | pbcopy; }
-
-# Get SHA of parent commit
-function parent { git log -1 --format="%P" | tr -d '\n' | pbcopy; }
+function parent { git log -1 --format="%P" | tr -d '\n'; }
 
 #This fixes all commits for a repo to be my personal username...use with caution :)
-# alias makeme='git filter-branch -f --env-filter "GIT_AUTHOR_NAME=\'Nichole Treadway\' GIT_AUTHOR_EMAIL=\'kntreadway@gmail.com\' GIT_COMMITTER_NAME=\'Nichole Treadway\' GIT_COMMITTER_EMAIL=\'kntreadway@gmail.com\'" HEAD"
+function makeme {
+  name='Nichole Treadway'
+  email='kntreadway@gmail.com'
+  git filter-branch -f --env-filter "GIT_AUTHOR_NAME='$name' GIT_AUTHOR_EMAIL='$email' GIT_COMMITTER_NAME='$name' GIT_COMMITTER_EMAIL='$name'" HEAD
+}
 
 #Git Diff Next - personal git workflow
 export GDNPATH="$HOME/git_diff_next.rb"

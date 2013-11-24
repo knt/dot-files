@@ -6,6 +6,7 @@ alias knt='cd ~/code'
 alias be='bundle exec'
 alias bi='bundle install'
 alias br='branch'
+alias cparent=`parent | pbcopy`
 alias g='git'
 alias ga='git add'
 alias gd='git diff'
