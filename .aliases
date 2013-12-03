@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alias knt='cd ~/code'
+alias knt='cd $HOME/code'
 
 # Git and other Shortcuts
 alias be='bundle exec'
@@ -14,12 +14,13 @@ alias gbr='git branch'
 alias gco='git co'
 alias gp='git pull origin master'
 alias gpr='git pull --rebase origin master'
-alias gr='cd ~/code/gr'
+alias gr='cd $HOME/code/gr'
 alias gst='git status'
 alias gx='gitx'
 alias ls='ls -G'
 alias lsa='ls -a'
 alias rt='ruby -Ilib'
+alias rb='ruby'
 alias st='status'
 
 #Exit the current directory and reenter it; useful for reloading .rvrmc
@@ -27,3 +28,6 @@ alias reenter='current=`pwd`; cd ..; cd $current'
 
 #### Javascript Console
 alias jsc=/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc
+
+#Git Diff Next - personal git workflow
+alias gdn=$SCRIPTS_HOME/git_diff_next.rb

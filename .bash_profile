@@ -75,44 +75,17 @@ proml
 #export PS1="\[\e[1;35m\]\h\[\e[m\] \w$ "
 export PS1
 
-#### Custom Functions and Shortcuts
-###Custom Shortcuts
-function grp { grep -riI --exclude=\*.log --exclude-dir="\.git;coverage" --color $1 .; }
-function p { for f in $(ls -d ~/code/$1*); do cd $f; break; done; }
-function k { for f in $(ls -d ~/knt/$1*); do cd $f; break; done; }
-function m { for f in $(ls -d ~/code/$1*); do subl $f; break; done; }
-
-# Open all unmerged files in Sublime
-function conflicts { subl -n `git diff --name-only --diff-filter=U | tr "\\n" " "`; }
-
-# Get SHA of parent commit
-function parent { git log -1 --format="%P" | tr -d '\n'; }
-
-#This fixes all commits for a repo to be my personal username...use with caution :)
-function makeme {
-  name='Nichole Treadway'
-  email='kntreadway@gmail.com'
-  git filter-branch -f --env-filter "GIT_AUTHOR_NAME='$name' GIT_AUTHOR_EMAIL='$email' GIT_COMMITTER_NAME='$name' GIT_COMMITTER_EMAIL='$name'" HEAD
-}
-
-#Git Diff Next - personal git workflow
-export GDNPATH="$HOME/git_diff_next.rb"
-function gdn { ruby $GDNPATH; }
-
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 source /Users/knt/.rvm/scripts/rvm
 
-#Dash Documentation shortcut
-function rdash { open dash://ruby:$1; }
-function railsdash { open dash://rails:$1; }
 
-# Find most used commands in bash history as alias candidates, from @rook
-# history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
-# history | awk '{a[substr($0, index($0,$2))]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
+export BASH_FILES_HOME=$HOME/code/dot-files
+export SCRIPTS_HOME=$HOME/code/scripts
+export WORK_BASH=$HOME/.bash_profile_gr
 
-source ~/.aliases
+source $BASH_FILES_HOME/.bash-functions
+source $BASH_FILES_HOME/.aliases
 
 #### Work Bash Profile
-WORK_BASH="$HOME/.bash_profile_gr"
 [[ -s $WORK_BASH ]] && source $WORK_BASH
