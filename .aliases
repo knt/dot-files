@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alias knt='cd $HOME/code'
+alias knt='cd $CODE_DIR'
 
 # Git and other Shortcuts
 alias be='bundle exec'

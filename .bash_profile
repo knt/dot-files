@@ -75,17 +75,20 @@ proml
 #export PS1="\[\e[1;35m\]\h\[\e[m\] \w$ "
 export PS1
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-source /Users/knt/.rvm/scripts/rvm
+# TO-DO: FIX
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
+# source /Users/knt/.rvm/scripts/rvm
 
 
-export BASH_FILES_HOME=$HOME/code/dot-files
-export SCRIPTS_HOME=$HOME/code/scripts
+export CODE_DIR=$HOME/code
+
+# Work Bash Profile
 export WORK_BASH=$HOME/.bash_profile_gr
+[[ -s $WORK_BASH ]] && source $WORK_BASH
+
+export BASH_FILES_HOME=$CODE_DIR/dot-files
+export SCRIPTS_HOME=$CODE_DIR/scripts
 
 source $BASH_FILES_HOME/.bash-functions
 source $BASH_FILES_HOME/.aliases
-
-#### Work Bash Profile
-[[ -s $WORK_BASH ]] && source $WORK_BASH
