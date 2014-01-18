@@ -33,3 +33,6 @@ alias jsc=/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resourc
 
 #Git Diff Next - personal git workflow
 alias gdn=$SCRIPTS_HOME/git_diff_next.rb
+
+#Kill Evil Tunnelblick
+alias kt='sudo pkill -9 -f [T]unn; sudo pkill -9 -f [v]pn
