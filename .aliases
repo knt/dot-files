@@ -37,5 +37,7 @@ alias gdn=$SCRIPTS_HOME/git_diff_next.rb
 
 #Kill Evil Tunnelblick
 alias kt='sudo pkill -9 -f [T]unn; sudo pkill -9 -f [v]pn'
+#And start the evil
+alias ot='open -a Tunnelblick'
 
 alias gbm=$SCRIPTS_HOME/git_branch_merge.rb
