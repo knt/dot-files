@@ -2,7 +2,7 @@
 
 #### Custom Functions and Shortcuts
 ###Custom Shortcuts
-function grp { grep -riI --exclude=\*.log --exclude-dir="\.git;coverage" --color $1 .; }
+function grp { grep -riI --exclude=\*.log --exclude-dir={\.git,coverage,tmp} --color $1 .; }
 function p { for f in $(ls -d $HOME/code/$1*); do cd $f; break; done; }
 function k { for f in $(ls -d $HOME/knt/$1*); do cd $f; break; done; }
 function m { for f in $(ls -d $HOME/code/$1*); do subl $f; break; done; }

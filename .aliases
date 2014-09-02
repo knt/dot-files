@@ -10,11 +10,12 @@ alias cparent=`parent | pbcopy`
 alias g='git'
 alias ga='git add'
 alias gd='git diff'
+alias gwd='git diff --color-words'
 alias gbr='git branch'
 alias gco='git co'
 alias gp='git pull origin master'
-alias gpr='git pull --rebase origin master'
-alias gr='cd $HOME/code/gr'
+alias gpr='git pull --rebase origin mainline'
+alias gqf='git rebase -i HEAD~2'
 alias grm='git rm'
 alias gst='git status'
 alias gx='/usr/local/bin/gitx'
@@ -25,6 +26,9 @@ alias pse='ps -ef'
 alias rt='ruby -Ilib'
 alias rb='ruby'
 alias st='status'
+
+#iOS dev related aliases
+alias pod='pod --verbose'
 
 #Exit the current directory and reenter it; useful for reloading .rvrmc
 alias reenter='current=`pwd`; cd ..; cd $current'
