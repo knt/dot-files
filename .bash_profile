@@ -1,8 +1,5 @@
 #!/bin/bash
 
-#### Load RVM, if you are using it
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 #### Paths
 export PATH=/usr/local/bin:~/bin:$PATH
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -97,3 +94,7 @@ export SCRIPTS_HOME=$CODE_DIR/scripts
 
 source $BASH_FILES_HOME/.bash-functions
 source $BASH_FILES_HOME/.aliases
+
+#### Load RVM, if you are using it
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
