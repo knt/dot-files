@@ -92,7 +92,7 @@ export WORK_BASH=$HOME/.bash_profile_gr
 export BASH_FILES_HOME=$CODE_DIR/dot-files
 export SCRIPTS_HOME=$CODE_DIR/scripts
 
-source $BASH_FILES_HOME/.bash-functions
+source $BASH_FILES_HOME/.bash_functions
 source $BASH_FILES_HOME/.aliases
 
 #### Load RVM, if you are using it
