@@ -6,7 +6,9 @@ alias knt='cd $CODE_DIR'
 alias be='bundle exec'
 alias bi='bundle install'
 alias br='branch'
-alias cparent=`parent | pbcopy`
+alias cparent='parent | pbcopy'
+alias edit_alias="subl ~/.aliases" 
+alias edit_bash="subl ~/.bash_profile"
 alias g='git'
 alias ga='git add'
 alias gd='git diff'
@@ -16,9 +18,10 @@ alias gco='git co'
 alias gp='git pull origin master'
 alias gpr='git pull --rebase origin mainline'
 alias gqf='git rebase -i HEAD~2'
+alias grqf="git commit -m 'fix'; gqf"
 alias grm='git rm'
 alias gst='git status'
-alias gx='/usr/local/bin/gitx/gitx'
+alias gx='/usr/local/bin/gitx'
 alias gitx='echo "USE gx!";'
 alias ls='ls -G'
 alias lsa='ls -a'
@@ -40,10 +43,5 @@ alias jsc=/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resourc
 
 #Git Diff Next - personal git workflow
 alias gdn=$SCRIPTS_HOME/git_diff_next.rb
-
-#Kill Evil Tunnelblick
-alias kt='sudo pkill -9 -f [T]unn; sudo pkill -9 -f [v]pn'
-#And start the evil
-alias ot='open -a Tunnelblick'
 
 alias gbm=$SCRIPTS_HOME/git_branch_merge.rb

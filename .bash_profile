@@ -22,7 +22,6 @@ fi
 #source /Users/knt/.rvm/scripts/
 
 
-
 #### Ruby Settings
 export RUBY_GC_HEAP_INIT_SLOTS=800000
 export RUBY_HEAP_FREE_MIN=100000
@@ -97,3 +96,14 @@ export SCRIPTS_HOME=$CODE_DIR/scripts
 
 source $BASH_FILES_HOME/.bash-functions
 source $BASH_FILES_HOME/.aliases
+<<<<<<< 9b57f52d4ad5ea10997f42e7d9fc3b485e5d05da
+=======
+
+#### Load RVM, if you are using it
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+>>>>>>> add some new aliases
